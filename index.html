@@ -736,15 +736,30 @@
     item.classList.toggle('open');
   }
 
-  function submitForm(e) {
-    e.preventDefault();
-    const btn = document.querySelector('.btn-submit');
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.btn-submit');
+
+  const ho_ten = document.querySelector('[name="ho_ten"]').value;
+  const so_dien_thoai = document.querySelector('[name="so_dien_thoai"]').value;
+  const email = document.querySelector('[name="email"]').value;
+  const linh_vuc = document.querySelector('[name="linh_vuc"]').value;
+
+  fetch('https://hook.eu2.make.com/ur1jppcoBqnoobofxkkv2mspbbo4', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
+  })
+  .then(() => {
     btn.textContent = '✅ Đăng ký thành công! Kiểm tra Zalo của bạn';
     btn.style.background = '#16A34A';
     btn.disabled = true;
-    // Thay link này bằng Google Form hoặc webhook Make của bạn
-    // fetch('YOUR_WEBHOOK_URL', { method:'POST', body: new FormData(e.target) });
-  }
+  })
+  .catch(() => {
+    btn.textContent = '❌ Có lỗi, vui lòng thử lại';
+    btn.disabled = false;
+  });
+}
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
