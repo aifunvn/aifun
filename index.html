@@ -745,7 +745,17 @@ function submitForm(e) {
   const email = document.querySelector('[name="email"]').value;
   const linh_vuc = document.querySelector('[name="linh_vuc"]').value;
 
-  fetch('https://script.google.com/macros/s/AKfycbz29wOGY0kz0_eeGU6yRC_B7gCfN-rouLgjWQHqmXWstNraqfiI2mZV3PStth1xj19D/exec', {
+  fetch('URL_APPS_SCRIPT', {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
+})
+.then(() => {
+  btn.textContent = '✅ Đăng ký thành công! Kiểm tra Zalo của bạn';
+  btn.style.background = '#16A34A';
+  btn.disabled = true;
+})', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
