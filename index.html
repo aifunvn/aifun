@@ -407,7 +407,6 @@
     <h2>Lộ trình học<br>từng bước, áp dụng ngay</h2>
     <p class="sub-text">Mỗi bài học có video demo, bài tập thực hành và feedback từ cộng đồng.</p>
     <div class="day-list">
-
       <div class="day-item">
         <div class="day-header">
           <div class="day-num">1</div>
@@ -418,7 +417,6 @@
           <div class="day-badge">20 phút</div>
         </div>
       </div>
-
       <div class="day-item">
         <div class="day-header">
           <div class="day-num">2</div>
@@ -429,7 +427,6 @@
           <div class="day-badge">20 phút</div>
         </div>
       </div>
-
       <div class="day-item">
         <div class="day-header">
           <div class="day-num">3</div>
@@ -440,7 +437,6 @@
           <div class="day-badge hot">🔥 Hay nhất</div>
         </div>
       </div>
-
       <div class="day-item">
         <div class="day-header">
           <div class="day-num">4</div>
@@ -451,7 +447,6 @@
           <div class="day-badge hot">💰 Tăng doanh thu</div>
         </div>
       </div>
-
       <div class="day-item">
         <div class="day-header">
           <div class="day-num accent">5</div>
@@ -462,7 +457,6 @@
           <div class="day-badge hot">🎯 Lộ trình cá nhân</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -652,7 +646,7 @@
             <option>Khác</option>
           </select>
         </div>
-        <button type="submit" class="btn-submit">🚀 Đăng Ký Miễn Phí Ngay</button>
+        <button type="submit" class="btn-submit" id="submitBtn">🚀 Đăng Ký Miễn Phí Ngay</button>
         <div class="form-guarantee">
           🔒 Thông tin được bảo mật · Không spam · Thoát bất cứ lúc nào
         </div>
@@ -667,7 +661,6 @@
     <div class="section-tag">Câu hỏi thường gặp</div>
     <h2>Bạn đang thắc mắc điều gì?</h2>
     <div class="faq-list">
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           Khoá học này thực sự miễn phí 100%?
@@ -675,7 +668,6 @@
         </div>
         <div class="faq-a">Có, hoàn toàn miễn phí. Không có phí ẩn. Chúng tôi tạo khoá học này để bạn trải nghiệm chất lượng đào tạo của AIFUN trước khi quyết định học các khoá nâng cao.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           Tôi cần chuẩn bị gì trước khi học?
@@ -683,7 +675,6 @@
         </div>
         <div class="faq-a">Chỉ cần điện thoại hoặc máy tính có kết nối internet. Không cần biết IT, lập trình hay bất kỳ kiến thức kỹ thuật nào. Khoá học được thiết kế cho người mới bắt đầu hoàn toàn.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           Bài học giao qua kênh nào? Có học được trên điện thoại không?
@@ -691,7 +682,6 @@
         </div>
         <div class="faq-a">Bài học được gửi mỗi ngày qua Zalo OA của AIFUN. Bạn hoàn toàn có thể học trên điện thoại, bất cứ lúc nào thuận tiện.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           Nếu bận không học kịp ngày hôm đó thì sao?
@@ -699,7 +689,6 @@
         </div>
         <div class="faq-a">Không sao cả. Bài học được lưu lại và bạn có thể xem lại bất cứ lúc nào. Không có deadline học.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           Sau 5 ngày tôi có bị bán hàng liên tục không?
@@ -707,7 +696,6 @@
         </div>
         <div class="faq-a">Chúng tôi sẽ giới thiệu các khoá nâng cao và webinar chuyên sâu — nhưng hoàn toàn không áp lực. Bạn có thể chọn tiếp tục hoặc chỉ dùng những gì đã học. Mọi quyết định đều là của bạn.</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -731,52 +719,51 @@
 </footer>
 
 <script>
+  // ── APPS SCRIPT URL ──
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWKCPtlMkAsgFEXAB7Q6K7xZxdMj2aNFp-4i2E9Gs5-FqGg3Pw_XNiekf2N_I0pXo/exec';
+
   function toggleFaq(el) {
-    const item = el.parentElement;
-    item.classList.toggle('open');
+    el.parentElement.classList.toggle('open');
   }
 
-function submitForm(e) {
-  e.preventDefault();
-  const btn = document.querySelector('.btn-submit');
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const ho_ten        = document.querySelector('[name="ho_ten"]').value.trim();
+    const so_dien_thoai = document.querySelector('[name="so_dien_thoai"]').value.trim();
+    const email         = document.querySelector('[name="email"]').value.trim();
+    const linh_vuc      = document.querySelector('[name="linh_vuc"]').value;
 
-  const ho_ten = document.querySelector('[name="ho_ten"]').value;
-  const so_dien_thoai = document.querySelector('[name="so_dien_thoai"]').value;
-  const email = document.querySelector('[name="email"]').value;
-  const linh_vuc = document.querySelector('[name="linh_vuc"]').value;
-
-  fetch('URL_APPS_SCRIPT', {
-  method: 'POST',
-  mode: 'no-cors',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
-})
-.then(() => {
-  btn.textContent = '✅ Đăng ký thành công! Kiểm tra Zalo của bạn';
-  btn.style.background = '#16A34A';
-  btn.disabled = true;
-})', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
-  })
-  .then(() => {
-    btn.textContent = '✅ Đăng ký thành công! Kiểm tra Zalo của bạn';
-    btn.style.background = '#16A34A';
+    btn.textContent = '⏳ Đang gửi...';
     btn.disabled = true;
-  })
-  .catch(() => {
-    btn.textContent = '❌ Có lỗi, vui lòng thử lại';
-    btn.disabled = false;
-  });
-}
+
+    // Dùng no-cors — Google Apps Script không hỗ trợ CORS preflight
+    // Dữ liệu vẫn ghi vào Sheet dù không nhận được response
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
+    })
+    .then(() => {
+      // no-cors luôn resolve — dữ liệu đã được gửi
+      btn.textContent = '✅ Đăng ký thành công! Kiểm tra Zalo của bạn';
+      btn.style.background = '#16A34A';
+      btn.disabled = true;
+      document.getElementById('regForm').reset();
+    })
+    .catch(() => {
+      btn.textContent = '❌ Có lỗi, vui lòng thử lại';
+      btn.style.background = '';
+      btn.disabled = false;
+    });
+  }
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
       const el = document.querySelector(a.getAttribute('href'));
-      if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
