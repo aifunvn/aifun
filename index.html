@@ -720,7 +720,13 @@
 
 <script>
   // ── APPS SCRIPT URL ──
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWKCPtlMkAsgFEXAB7Q6K7xZxdMj2aNFp-4i2E9Gs5-FqGg3Pw_XNiekf2N_I0pXo/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx592WiKsrDfRsCVwx8pxkZfry5DTCTtycUrTGOxlT1_HpvmHeviDmcb5qlu9TIiTGJ/exec';
+
+  // Đọc UTM từ URL
+  function getUTM() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('utm') || params.get('utm_source') || 'Trực tiếp';
+  }
 
   function toggleFaq(el) {
     el.parentElement.classList.toggle('open');
@@ -733,6 +739,7 @@
     const so_dien_thoai = document.querySelector('[name="so_dien_thoai"]').value.trim();
     const email         = document.querySelector('[name="email"]').value.trim();
     const linh_vuc      = document.querySelector('[name="linh_vuc"]').value;
+    const nguon         = getUTM();
 
     btn.textContent = '⏳ Đang gửi...';
     btn.disabled = true;
@@ -742,7 +749,7 @@
     fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
+      body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc, nguon })
     })
     .then(() => {
       // no-cors luôn resolve — dữ liệu đã được gửi
