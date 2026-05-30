@@ -745,7 +745,7 @@ function submitForm(e) {
   const email = document.querySelector('[name="email"]').value;
   const linh_vuc = document.querySelector('[name="linh_vuc"]').value;
 
-  fetch('https://aifun-proxy.diepthanhchungtk.workers.dev', {
+  fetch('https://script.google.com/macros/s/AKfycbwcYIy3D0X3MfksmrpYez8iPSJiGaTEz8uabfB5HJasL4KVXrcbG5UXaQiIZZxqFgJ0/exec', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ho_ten, so_dien_thoai, email, linh_vuc })
