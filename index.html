@@ -650,6 +650,12 @@
         <div class="form-guarantee">
           🔒 Thông tin được bảo mật · Không spam · Thoát bất cứ lúc nào
         </div>
+        <div id="giftBox" style="display:none;margin-top:20px;background:linear-gradient(135deg,#0F1F4B,#1e3a8a);border-radius:14px;padding:20px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">🎁</div>
+          <div style="color:#fff;font-size:16px;font-weight:800;margin-bottom:6px;">Nhận ngay 4 tài liệu AI miễn phí!</div>
+          <div style="color:#94a3b8;font-size:13px;margin-bottom:16px;">Trị giá 1,500,000đ — Tặng hoàn toàn miễn phí cho bạn</div>
+          <a href="qua-tang.html" style="display:inline-block;background:#F97316;color:#fff;font-size:15px;font-weight:800;padding:12px 32px;border-radius:10px;text-decoration:none;box-shadow:0 4px 16px rgba(249,115,22,.4);">🎁 Nhận Quà Tặng Ngay</a>
+        </div>
       </form>
     </div>
   </div>
@@ -757,6 +763,13 @@
       btn.style.background = '#16A34A';
       btn.disabled = true;
       document.getElementById('regForm').reset();
+
+      // Hiện nút nhận quà tặng
+      const giftBox = document.getElementById('giftBox');
+      if (giftBox) {
+        giftBox.style.display = 'block';
+        giftBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     })
     .catch(() => {
       btn.textContent = '❌ Có lỗi, vui lòng thử lại';
